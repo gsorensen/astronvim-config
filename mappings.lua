@@ -11,15 +11,21 @@ return {
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
-        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr) require("astronvim.utils.buffer").close(bufnr) end)
+        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr)
+          require("astronvim.utils.buffer").close(
+            bufnr)
+        end)
       end,
       desc = "Pick to close",
     },
     -- tables with the `name` key will be registered with which-key if it's installed
-    -- this is useful for naming menus
+    -- this is us
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
-    -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    ["<leader>w"] = { ":w!<cr>", desc = "Save File" }, -- change description but the same command
+    ["<leader>s"] = { "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch header/source" },
+    ["<leader>ap"] = { "<cmd>GitBlameToggle<cr>", desc = "Toggle git blame" },
+    ["<leader>rn"] = { vim.lsp.buf.rename, desc = "Rename symbol" },
   },
   t = {
     -- setting a mapping to false will disable it
